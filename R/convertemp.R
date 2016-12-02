@@ -24,8 +24,13 @@ fahr_to_kelvin <- function(temp) {
 #' @examples
 #' kelvin_to_celsius(273.15)
 kelvin_to_celsius <- function(temp) {
-  celsius <- temp - 273.15
+  if(temp<0) {
+    warning("kelvin cannot be negative")
+    }
+  else{
+    celsius <- temp - 273.15
   return(celsius)
+    }
 }
 
 #' Convert Celsius to Fahrenheit
@@ -70,9 +75,13 @@ fahr_to_celsius <- function(temp) {
 #' @examples
 #' kelvin_to_fahr(273.15)
 kelvin_to_fahr <- function(temp) {
+  if(temp<0) {
+    warning("kelvin cannot be negative")
+  }
+  else{
   celsius <- kelvin_to_celsius(temp)
   result <- celsius_to_fahr(celsius)
-  return(result)
+  return(result)}
 }
 
 #' Convert Celsius to Kelvin
@@ -88,4 +97,5 @@ kelvin_to_fahr <- function(temp) {
 celsius_to_kelvin <- function(temp) {
   fahr <- celsius_to_fahr(temp)
   result <- fahr_to_kelvin(fahr)
+  return(result)
 }
